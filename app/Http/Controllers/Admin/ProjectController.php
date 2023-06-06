@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -35,7 +36,15 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
+        $project = new Project();
+        $project->fill($data);
+        $project->save();
+        //$post = Post::create('data');
+        //DEBUG
+        //dd($data);
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato  creato");
     }
 
     /**
@@ -55,9 +64,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -67,9 +76,12 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title']);
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato modificato con successo");
     }
 
     /**
@@ -78,8 +90,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato cancellato");
     }
 }
