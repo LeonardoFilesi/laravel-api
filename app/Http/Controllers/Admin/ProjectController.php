@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Suppost\Str;
 
 class PageController extends Controller
 {
@@ -15,7 +18,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -25,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -55,7 +59,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
