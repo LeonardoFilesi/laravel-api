@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as faker;
+use App\Models\Project;
 use Illuminate\Support\Str;
 
 class ProjectTableSeeder extends Seeder
