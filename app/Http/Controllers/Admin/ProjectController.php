@@ -29,7 +29,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -45,7 +46,7 @@ class PageController extends Controller
         $project = new Project();
         $project->fill($data);
         $project->save();
-        //$post = Post::create('data');
+        //$post = Post::create($data);
         //DEBUG
         //dd($data);
         return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato  creato");
@@ -81,7 +82,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
-    {
+    {   
+       // $data = $request->validated();
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']);
         $project->update($data);
