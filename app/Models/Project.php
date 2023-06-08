@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+    public function projects() {
+        return $this->belongsTo(Project::class);
+    }
 }
