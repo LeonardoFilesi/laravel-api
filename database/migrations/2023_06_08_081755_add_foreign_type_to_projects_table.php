@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('type_id')->nullable()->after('id'); //aggiungo una colonna alla tabella projects che si chiama type_id
 
             $table->foreign('type_id')->references('id')->on('types')->onDelete('set null'); //aggiungo una chiave esterna alla tabella projects che si chiama type_id che fa riferimento alla colonna id della tabella types e se cancello un type_id da types lo setta a null in projects
-
         });
     }
 

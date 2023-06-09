@@ -7,9 +7,9 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Suppost\Str;
+use Illuminate\Support\Str;
 
-class PageController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,8 +29,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $projects = Project::all();
+        return view('admin.projects.create', compact('projects'));
     }
 
     /**
@@ -41,7 +41,8 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validated();
+        // $data = $request->validated();
+        $data = $request->all();
         $data['slug'] = Str::slug($data['title']);
         $project = new Project();
         $project->fill($data);
@@ -58,7 +59,7 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
         return view('admin.projects.show', compact('project'));
     }
@@ -71,7 +72,7 @@ class PageController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
