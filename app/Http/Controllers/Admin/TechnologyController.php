@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -14,7 +16,7 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $technologies = Technology::all();
         return view('admin.technologies.index', compact('technologies'));
     }
 
@@ -50,7 +52,7 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Technology $technology)
     {
         return view('admin.technologies.show', compact('technology'));
     }
@@ -61,7 +63,7 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Technology $technology)
     {
         return view('admin.technologies.edit', compact('technology'));
     }
@@ -73,7 +75,7 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Technology $technology)
     {
         $validatedData = $request->validated();
 
@@ -90,7 +92,7 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Technology $technology)
     {
         $technology->delete();
         return redirect()->route('admin.technologies.index')->with('success', "{$technology->name} deleted successfully");

@@ -28,7 +28,7 @@
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress Leonardo F.</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -67,6 +67,14 @@
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-regular fa-folder-open"></i> Project
+                                </a>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.types.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> Type
+                                </a>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> Techonolgy
                                 </a>
                             </li>
                         </ul>
