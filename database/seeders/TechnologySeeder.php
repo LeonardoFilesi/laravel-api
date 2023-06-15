@@ -16,10 +16,10 @@ class TechnologySeeder extends Seeder
      */
     public function run()
     {
-        $technologies = ['FRONTEND', 'BACKEND', 'FULLSTACK'];
+        $technologies = ['XBOX', 'PLAYSTATION', 'PERSONALCOMPUTER'];
         foreach ($technologies as $technology_value) {
             $new_technology = new Technology();
-            $new_technology->name = $technology_value;
+            $new_technology->name_technologies = $technology_value;
             $new_technology->slug = Str::slug($technology_value);
             $new_technology->save();
         }

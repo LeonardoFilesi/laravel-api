@@ -17,7 +17,7 @@ class TypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Web', 'Mobile', 'Desktop', 'Game'];
+        $types = ['ActionRPG', 'FPS', 'MOBA', 'SoulsLike'];
         foreach($types as $type_value){
             $new_type= new Type();
             $new_type->name = $type_value;

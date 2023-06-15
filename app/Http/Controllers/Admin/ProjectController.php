@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -44,6 +48,7 @@ class ProjectController extends Controller
         // $data = $request->validated();
         $data = $request->all();
         $data['slug'] = Str::slug($data['title']);
+
         $project = new Project();
         $project->fill($data);
         $project->save();

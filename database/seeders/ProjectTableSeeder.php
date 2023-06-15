@@ -20,6 +20,7 @@ class ProjectTableSeeder extends Seeder
             $project = new Project();
             $project->title = $faker->sentence(3); // le funzioni di php
             $project->slug = Str::slug($project->title, '-'); // le-funzioni-di-php
+            $project->image = $faker->imageUrl(600, 300, 'Post', false, false);
             $project->content = $faker->text();
             $project->save();
         }
